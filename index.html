@@ -3,324 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DPIA — La plataforma que entiende cómo tomás decisiones</title>
+<title data-i18n="pageTitle">DPIA — La plataforma que entiende cómo tomás decisiones</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f7f4ef;
-    --dark: #0e0e12;
-    --accent: #1a56ff;
-    --gold: #c9a84c;
-    --text: #1a1a24;
-    --muted: #7a7a90;
-    --border: #e2ddd6;
-    --card: #fff;
-  }
-
-  * { margin:0; padding:0; box-sizing:border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    min-height: 100vh;
-  }
-
-  /* HERO */
-  .hero {
-    background: var(--dark);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem 3rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  .hero-glow {
-    position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(26,86,255,0.15), transparent 70%);
-    top: -200px; right: -200px;
-  }
-
-  .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; width: 100%; }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2rem;
-  }
-
-  .tag-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
-    animation: blink 2s infinite;
-  }
-
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-  h1 {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    color: #fff;
-    line-height: 1.05;
-    margin-bottom: 1.5rem;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .hero-desc {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.45);
-    max-width: 520px;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-  }
-
-  .hero-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-bottom: 3rem;
-  }
-
-  .pill {
-    font-size: 0.62rem;
-    padding: 0.35rem 0.9rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.04);
-  }
-
-  .hero-stat-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 12px;
-    overflow: hidden;
-    max-width: 500px;
-  }
-
-  .hero-stat {
-    padding: 1.2rem 1.5rem;
-    background: rgba(255,255,255,0.03);
-  }
-
-  .hs-num {
-    font-family: 'Instrument Serif', serif;
-    font-size: 1.8rem;
-    color: #fff;
-    line-height: 1;
-  }
-
-  .hs-label {
-    font-size: 0.58rem;
-    color: rgba(255,255,255,0.3);
-    margin-top: 0.3rem;
-    line-height: 1.4;
-  }
-
-  /* SECTIONS */
-  .section { padding: 5rem 3rem; max-width: 960px; margin: 0 auto; }
-
-  .sec-eyebrow {
-    font-size: 0.58rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1rem;
-  }
-
-  .sec-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    line-height: 1.15;
-    margin-bottom: 1rem;
-    color: var(--text);
-  }
-
-  .sec-title em { font-style: italic; color: var(--accent); }
-
-  .sec-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 560px;
-    margin-bottom: 3rem;
-  }
-
-  /* SPHERE GRID */
-  .sphere-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0.75rem;
-    margin-bottom: 3rem;
-  }
-
-  .sphere-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.2rem 1rem;
-    text-align: center;
-    transition: box-shadow 0.2s, transform 0.2s;
-    cursor: default;
-  }
-
-  .sphere-card:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
-  }
-
-  .sphere-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-  .sphere-name { font-size: 0.75rem; font-weight: 500; margin-bottom: 0.3rem; }
-  .sphere-desc { font-size: 0.62rem; color: var(--muted); line-height: 1.4; }
-
-  /* HOW IT WORKS */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-
-  .step {
-    background: var(--dark);
-    border-radius: 12px;
-    padding: 1.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .step::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--gold));
-  }
-
-  .step-num {
-    font-family: 'Instrument Serif', serif;
-    font-size: 2.5rem;
-    color: rgba(255,255,255,0.06);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  .step-title { font-size: 0.82rem; color: #fff; margin-bottom: 0.5rem; font-weight: 500; }
-  .step-desc { font-size: 0.7rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
-
-  /* DIFFERENTIALS */
-  .diff-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-
-  .diff-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.3rem 1.5rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-
-  .diff-icon { font-size: 1.2rem; flex-shrink: 0; }
-  .diff-title { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.3rem; }
-  .diff-desc { font-size: 0.68rem; color: var(--muted); line-height: 1.5; }
-
-  /* CTA */
-  .cta-section {
-    background: var(--dark);
-    padding: 5rem 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(26,86,255,0.1), transparent 70%);
-  }
-
-  .cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
-
-  .cta-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    color: #fff;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-  }
-
-  .cta-title em { font-style: italic; color: var(--gold); }
-
-  .cta-desc {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.4);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-  }
-
-  .cta-btn {
-    display: inline-block;
-    padding: 0.9rem 2.5rem;
-    background: var(--accent);
-    color: #fff;
-    border-radius: 8px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .cta-btn:hover { opacity: 0.85; }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  @media (max-width: 600px) {
-    .hero { padding: 3rem 1.5rem; }
-    .section { padding: 3rem 1.5rem; }
-    .hero-stat-row { grid-template-columns: 1fr; }
-    .diff-grid { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr; }
-  }
-</style>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -329,28 +14,42 @@
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-tag"><div class="tag-dot"></div>Plataforma social + económica</div>
-    <h1>Tu vida social<br>y económica,<br><em>en un solo lugar.</em></h1>
-    <p class="hero-desc">DPIA es la primera plataforma que entiende que cada decisión humana — en familia, trabajo, negocios o salud — tiene una dimensión social y una económica. Las conectamos.</p>
+    <div class="lang-switcher">
+      <label for="language-select" data-i18n="langLabel">Idioma</label>
+      <select id="language-select" aria-label="Selector de idioma">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="pl">Polski</option>
+        <option value="pt">Português</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="dk">Dansk</option>
+      </select>
+    </div>
+
+    <div class="hero-tag"><div class="tag-dot"></div><span data-i18n="heroTag">Plataforma social + económica</span></div>
+    <h1 data-i18n-html="heroTitleHtml">Tu vida social<br>y económica,<br><em>en un solo lugar.</em></h1>
+    <p class="hero-desc" data-i18n="heroDesc">DPIA es la primera plataforma que entiende que cada decisión humana — en familia, trabajo, negocios o salud — tiene una dimensión social y una económica. Las conectamos.</p>
     <div class="hero-pills">
-      <span class="pill">Red social local</span>
-      <span class="pill">Micrositios con cobro online</span>
-      <span class="pill">Chat con IA contextual</span>
-      <span class="pill">Señales de inversión</span>
-      <span class="pill">Segmentación geográfica</span>
+      <span class="pill" data-i18n="pill1">Red social local</span>
+      <span class="pill" data-i18n="pill2">Micrositios con cobro online</span>
+      <span class="pill" data-i18n="pill3">Chat con IA contextual</span>
+      <span class="pill" data-i18n="pill4">Señales de inversión</span>
+      <span class="pill" data-i18n="pill5">Segmentación geográfica</span>
     </div>
     <div class="hero-stat-row">
       <div class="hero-stat">
         <div class="hs-num">10+</div>
-        <div class="hs-label">Esferas sociales cubiertas</div>
+        <div class="hs-label" data-i18n="stat1Label">Esferas sociales cubiertas</div>
       </div>
       <div class="hero-stat">
         <div class="hs-num">2</div>
-        <div class="hs-label">Métodos de pago integrados</div>
+        <div class="hs-label" data-i18n="stat2Label">Métodos de pago integrados</div>
       </div>
       <div class="hero-stat">
         <div class="hs-num">1</div>
-        <div class="hs-label">Plataforma para todo</div>
+        <div class="hs-label" data-i18n="stat3Label">Plataforma para todo</div>
       </div>
     </div>
   </div>
@@ -358,21 +57,21 @@
 
 <!-- EL CONCEPTO -->
 <div class="section">
-  <div class="sec-eyebrow">El concepto central</div>
-  <h2 class="sec-title">El ser humano toma decisiones<br><em>en todas las esferas de su vida.</em></h2>
-  <p class="sec-desc">El "homo economicus" no solo existe en los mercados financieros. Existe cuando decidís qué médico elegir, a qué gestoría ir, qué producto comprar en tu barrio. DPIA conecta esas decisiones con las personas y negocios que las pueden resolver.</p>
+  <div class="sec-eyebrow" data-i18n="conceptEyebrow">El concepto central</div>
+  <h2 class="sec-title" data-i18n-html="conceptTitleHtml">El ser humano toma decisiones<br><em>en todas las esferas de su vida.</em></h2>
+  <p class="sec-desc" data-i18n="conceptDesc">El "homo economicus" no solo existe en los mercados financieros. Existe cuando decidís qué médico elegir, a qué gestoría ir, qué producto comprar en tu barrio. DPIA conecta esas decisiones con las personas y negocios que las pueden resolver.</p>
 
   <div class="sphere-grid">
-    <div class="sphere-card"><div class="sphere-icon">👨‍👩‍👧</div><div class="sphere-name">Familia</div><div class="sphere-desc">Decisiones y recursos del hogar</div></div>
-    <div class="sphere-card"><div class="sphere-icon">💼</div><div class="sphere-name">Trabajo</div><div class="sphere-desc">Servicios profesionales y laborales</div></div>
-    <div class="sphere-card"><div class="sphere-icon">🏢</div><div class="sphere-name">Negocios</div><div class="sphere-desc">Transacciones y oportunidades</div></div>
-    <div class="sphere-card"><div class="sphere-icon">🎓</div><div class="sphere-name">Educación</div><div class="sphere-desc">Cursos, materiales, asesorías</div></div>
-    <div class="sphere-card"><div class="sphere-icon">🎨</div><div class="sphere-name">Cultura</div><div class="sphere-desc">Arte, música, eventos locales</div></div>
-    <div class="sphere-card"><div class="sphere-icon">⚕️</div><div class="sphere-name">Salud</div><div class="sphere-desc">Profesionales y bienestar</div></div>
-    <div class="sphere-card"><div class="sphere-icon">⚽</div><div class="sphere-name">Deporte</div><div class="sphere-desc">Productos y servicios deportivos</div></div>
-    <div class="sphere-card"><div class="sphere-icon">🤝</div><div class="sphere-name">Comunidad</div><div class="sphere-desc">Servicios y negocios locales</div></div>
-    <div class="sphere-card"><div class="sphere-icon">📈</div><div class="sphere-name">Inversión</div><div class="sphere-desc">Señales y decisiones financieras</div></div>
-    <div class="sphere-card"><div class="sphere-icon">🌍</div><div class="sphere-name">Trámites</div><div class="sphere-desc">Gestiones y servicios oficiales</div></div>
+    <div class="sphere-card"><div class="sphere-icon">👨‍👩‍👧</div><div class="sphere-name" data-i18n="sphereFamilyName">Familia</div><div class="sphere-desc" data-i18n="sphereFamilyDesc">Decisiones y recursos del hogar</div></div>
+    <div class="sphere-card"><div class="sphere-icon">💼</div><div class="sphere-name" data-i18n="sphereWorkName">Trabajo</div><div class="sphere-desc" data-i18n="sphereWorkDesc">Servicios profesionales y laborales</div></div>
+    <div class="sphere-card"><div class="sphere-icon">🏢</div><div class="sphere-name" data-i18n="sphereBusinessName">Negocios</div><div class="sphere-desc" data-i18n="sphereBusinessDesc">Transacciones y oportunidades</div></div>
+    <div class="sphere-card"><div class="sphere-icon">🎓</div><div class="sphere-name" data-i18n="sphereEducationName">Educación</div><div class="sphere-desc" data-i18n="sphereEducationDesc">Cursos, materiales, asesorías</div></div>
+    <div class="sphere-card"><div class="sphere-icon">🎨</div><div class="sphere-name" data-i18n="sphereCultureName">Cultura</div><div class="sphere-desc" data-i18n="sphereCultureDesc">Arte, música, eventos locales</div></div>
+    <div class="sphere-card"><div class="sphere-icon">⚕️</div><div class="sphere-name" data-i18n="sphereHealthName">Salud</div><div class="sphere-desc" data-i18n="sphereHealthDesc">Profesionales y bienestar</div></div>
+    <div class="sphere-card"><div class="sphere-icon">⚽</div><div class="sphere-name" data-i18n="sphereSportsName">Deporte</div><div class="sphere-desc" data-i18n="sphereSportsDesc">Productos y servicios deportivos</div></div>
+    <div class="sphere-card"><div class="sphere-icon">🤝</div><div class="sphere-name" data-i18n="sphereCommunityName">Comunidad</div><div class="sphere-desc" data-i18n="sphereCommunityDesc">Servicios y negocios locales</div></div>
+    <div class="sphere-card"><div class="sphere-icon">📈</div><div class="sphere-name" data-i18n="sphereInvestmentName">Inversión</div><div class="sphere-desc" data-i18n="sphereInvestmentDesc">Señales y decisiones financieras</div></div>
+    <div class="sphere-card"><div class="sphere-icon">🌍</div><div class="sphere-name" data-i18n="sphereAdminName">Trámites</div><div class="sphere-desc" data-i18n="sphereAdminDesc">Gestiones y servicios oficiales</div></div>
   </div>
 </div>
 
@@ -380,30 +79,30 @@
 
 <!-- CÓMO FUNCIONA -->
 <div class="section">
-  <div class="sec-eyebrow">Cómo funciona</div>
-  <h2 class="sec-title">Simple para el usuario.<br><em>Poderoso para el negocio.</em></h2>
-  <p class="sec-desc">Cualquier persona o negocio puede tener su micrositio en DPIA en minutos, con todo lo que necesita para ofrecer y cobrar sus servicios.</p>
+  <div class="sec-eyebrow" data-i18n="worksEyebrow">Cómo funciona</div>
+  <h2 class="sec-title" data-i18n-html="worksTitleHtml">Simple para el usuario.<br><em>Poderoso para el negocio.</em></h2>
+  <p class="sec-desc" data-i18n="worksDesc">Cualquier persona o negocio puede tener su micrositio en DPIA en minutos, con todo lo que necesita para ofrecer y cobrar sus servicios.</p>
 
   <div class="steps">
     <div class="step">
       <div class="step-num">01</div>
-      <div class="step-title">Creás tu micrositio</div>
-      <div class="step-desc">En minutos tenés tu perfil online con foto, descripción, servicios y precios. Con QR propio para compartir.</div>
+      <div class="step-title" data-i18n="step1Title">Creás tu micrositio</div>
+      <div class="step-desc" data-i18n="step1Desc">En minutos tenés tu perfil online con foto, descripción, servicios y precios. Con QR propio para compartir.</div>
     </div>
     <div class="step">
       <div class="step-num">02</div>
-      <div class="step-title">Tus clientes te encuentran</div>
-      <div class="step-desc">Por código postal, dominio o búsqueda. Tu negocio aparece en el mapa de tu zona.</div>
+      <div class="step-title" data-i18n="step2Title">Tus clientes te encuentran</div>
+      <div class="step-desc" data-i18n="step2Desc">Por código postal, dominio o búsqueda. Tu negocio aparece en el mapa de tu zona.</div>
     </div>
     <div class="step">
       <div class="step-num">03</div>
-      <div class="step-title">La IA atiende consultas</div>
-      <div class="step-desc">El chat con IA contextual responde preguntas de tus clientes automáticamente, las 24 horas.</div>
+      <div class="step-title" data-i18n="step3Title">La IA atiende consultas</div>
+      <div class="step-desc" data-i18n="step3Desc">El chat con IA contextual responde preguntas de tus clientes automáticamente, las 24 horas.</div>
     </div>
     <div class="step">
       <div class="step-num">04</div>
-      <div class="step-title">Cobrás directo</div>
-      <div class="step-desc">MercadoPago y PayPal integrados. El cliente paga, vos recibís. Sin intermediarios.</div>
+      <div class="step-title" data-i18n="step4Title">Cobrás directo</div>
+      <div class="step-desc" data-i18n="step4Desc">MercadoPago y PayPal integrados. El cliente paga, vos recibís. Sin intermediarios.</div>
     </div>
   </div>
 </div>
@@ -412,34 +111,34 @@
 
 <!-- DIFERENCIALES -->
 <div class="section">
-  <div class="sec-eyebrow">Por qué DPIA</div>
-  <h2 class="sec-title">Lo que nadie más<br><em>combina en un solo lugar.</em></h2>
-  <p class="sec-desc">Cada feature existe por separado en otras plataformas. DPIA las une.</p>
+  <div class="sec-eyebrow" data-i18n="whyEyebrow">Por qué DPIA</div>
+  <h2 class="sec-title" data-i18n-html="whyTitleHtml">Lo que nadie más<br><em>combina en un solo lugar.</em></h2>
+  <p class="sec-desc" data-i18n="whyDesc">Cada feature existe por separado en otras plataformas. DPIA las une.</p>
 
   <div class="diff-grid">
     <div class="diff-card">
       <div class="diff-icon">📍</div>
-      <div><div class="diff-title">Red social local por CP</div><div class="diff-desc">Encontrás personas y negocios en tu zona exacta. No en todo el mundo — en tu barrio.</div></div>
+      <div><div class="diff-title" data-i18n="diff1Title">Red social local por CP</div><div class="diff-desc" data-i18n="diff1Desc">Encontrás personas y negocios en tu zona exacta. No en todo el mundo — en tu barrio.</div></div>
     </div>
     <div class="diff-card">
       <div class="diff-icon">🤖</div>
-      <div><div class="diff-title">Chat IA dentro del micrositio</div><div class="diff-desc">Tu asistente responde consultas mientras vos estás trabajando. Único en su tipo.</div></div>
+      <div><div class="diff-title" data-i18n="diff2Title">Chat IA dentro del micrositio</div><div class="diff-desc" data-i18n="diff2Desc">Tu asistente responde consultas mientras vos estás trabajando. Único en su tipo.</div></div>
     </div>
     <div class="diff-card">
       <div class="diff-icon">💳</div>
-      <div><div class="diff-title">Cobro integrado</div><div class="diff-desc">MercadoPago + PayPal listos para usar. Sin redirigir a otra plataforma.</div></div>
+      <div><div class="diff-title" data-i18n="diff3Title">Cobro integrado</div><div class="diff-desc" data-i18n="diff3Desc">MercadoPago + PayPal listos para usar. Sin redirigir a otra plataforma.</div></div>
     </div>
     <div class="diff-card">
       <div class="diff-icon">📊</div>
-      <div><div class="diff-title">Señales de inversión</div><div class="diff-desc">Para usuarios que también quieren tomar mejores decisiones financieras. Todo en un lugar.</div></div>
+      <div><div class="diff-title" data-i18n="diff4Title">Señales de inversión</div><div class="diff-desc" data-i18n="diff4Desc">Para usuarios que también quieren tomar mejores decisiones financieras. Todo en un lugar.</div></div>
     </div>
     <div class="diff-card">
       <div class="diff-icon">⭐</div>
-      <div><div class="diff-title">Ratings y reseñas reales</div><div class="diff-desc">Tus clientes califican tu servicio. Construís reputación verificable online.</div></div>
+      <div><div class="diff-title" data-i18n="diff5Title">Ratings y reseñas reales</div><div class="diff-desc" data-i18n="diff5Desc">Tus clientes califican tu servicio. Construís reputación verificable online.</div></div>
     </div>
     <div class="diff-card">
       <div class="diff-icon">🌐</div>
-      <div><div class="diff-title">Multi-idioma y multi-país</div><div class="diff-desc">Funciona en Argentina, Italia, Polonia y más. La plataforma se adapta al idioma del usuario.</div></div>
+      <div><div class="diff-title" data-i18n="diff6Title">Multi-idioma y multi-país</div><div class="diff-desc" data-i18n="diff6Desc">Funciona en Argentina, Italia, Polonia y más. La plataforma se adapta al idioma del usuario.</div></div>
     </div>
   </div>
 </div>
@@ -447,11 +146,12 @@
 <!-- CTA -->
 <div class="cta-section">
   <div class="cta-inner">
-    <div class="cta-title">Tu micrositio.<br><em>Tu negocio. Online hoy.</em></div>
-    <p class="cta-desc">Sin conocimientos técnicos. Sin semanas de espera. En minutos tenés tu presencia online con IA y cobro integrado.</p>
-    <a href="https://dpia.site" class="cta-btn">Conocer DPIA →</a>
+    <div class="cta-title" data-i18n-html="ctaTitleHtml">Tu micrositio.<br><em>Tu negocio. Online hoy.</em></div>
+    <p class="cta-desc" data-i18n="ctaDesc">Sin conocimientos técnicos. Sin semanas de espera. En minutos tenés tu presencia online con IA y cobro integrado.</p>
+    <a href="https://dpia.site" class="cta-btn" data-i18n="ctaBtn">Conocer DPIA →</a>
   </div>
 </div>
 
+<script src="static/i18n.js"></script>
 </body>
 </html>
